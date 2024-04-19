@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Racing Game</title>
+</head>
+
+<body>
+	<script src="build/sketchbook.min.js"></script>
+	<script>
+		let worldKey = [];
+		let boxmanKey = [];
+		let carKey = [];
+		let heliKey = [];
+		let airplaneKey = [];
+
+		const searchParams = new URLSearchParams(window.location.search);
+		for (const param of searchParams) {
+			if (param[0]) {
+				let firstKey = param[1].split('-')[0];
+				let secondKey = param[1].split('-')[1];
+
+				if (param[0] === 'world') worldKey = [firstKey, secondKey];
+				if (param[0] === 'boxman') boxmanKey = [firstKey, secondKey];
+				if (param[0] === 'car') carKey = [firstKey, secondKey];
+				if (param[0] === 'heli') heliKey = [firstKey, secondKey];
+				if (param[0] === 'airplane') airplaneKey = [firstKey, secondKey];
+			}
+		}
+
+		if (worldKey.length !== 0) {
+			const world = new Sketchbook.World('https://www.dropbox.com/scl/fi/' + worldKey[0] + '/world.glb?rlkey=' + worldKey[1] + '&dl=1', boxmanKey, carKey, heliKey, airplaneKey);
+		} else {
+			const world = new Sketchbook.World('build/assets/world.glb', boxmanKey, carKey, heliKey, airplaneKey);
+		}
+	</script>
+</body>
+
+</html>

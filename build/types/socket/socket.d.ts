@@ -1,0 +1,15 @@
+import { LoadingManager } from '../core/LoadingManager';
+import { ISpawnPoint } from '../interfaces/ISpawnPoint';
+import { World } from '../sketchbook';
+import { MyCharacter } from '../world/Player/Player';
+export declare const socket: import("socket.io-client").Socket<import("@socket.io/component-emitter").DefaultEventsMap, import("@socket.io/component-emitter").DefaultEventsMap>;
+export declare let mySid: any;
+export declare const timeStamp = 100;
+export declare const InitSocket: () => void;
+export declare const ReceiveMySid: (OneCharacter: MyCharacter) => void;
+export declare const ReportJoin: (OneCharacter: MyCharacter) => void;
+export declare const createModels: (world: World, scenarioId: string, loadingManager: LoadingManager, sp: ISpawnPoint, players: MyCharacter[]) => void;
+export declare const pressKeyboard: (event: KeyboardEvent, code: string, world: World, pressed: boolean) => void;
+export declare const moveCharacters: (world: World) => void;
+export declare const updateCharacters: (world: World) => void;
+export declare const updateVehicles: (world: World, sid: string) => void;
