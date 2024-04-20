@@ -1,0 +1,25 @@
+.wallet-page {
+	position: fixed;
+	display: flex; 
+	z-index: 100; 
+	width: 100%; 
+}
+
+.wallet-content {
+	width: 426px; 
+	height: 539px; 
+	background-color: #34639A; 
+	margin: auto; 
+}
+
+.wallet-text {
+	font-size: 30px; 
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+	font-weight: bolder;
+}
+
+.btn-wallet {
+	width: 350px; 
+	height: 79px;
+	border: 3px solid #30C823; 
+}
