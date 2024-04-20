@@ -13,9 +13,6 @@ import { Path } from './Path';
 import { Vehicle } from '../vehicles/Vehicle';
 import { Scenario } from './Scenario';
 import { Sky } from './Sky';
-import { MyCharacter } from './Player/Player';
-export declare let enableVehicleUpdate: boolean;
-export declare let enableCharacterUpdate: boolean;
 export declare class World {
     renderer: THREE.WebGLRenderer;
     camera: THREE.PerspectiveCamera;
@@ -46,15 +43,8 @@ export declare class World {
     paths: Path[];
     scenarioGUIFolder: any;
     updatables: IUpdatable[];
-    mySid: String;
-    players: MyCharacter[];
-    boxmanKey: any;
-    carKey: any;
-    heliKey: any;
-    airplaneKey: any;
     private lastScenarioID;
-    constructor(worldScenePath?: any, boxmanKey?: any, carKey?: any, heliKey?: any, airplaneKey?: any);
-    getMyUserData(): Object;
+    constructor(worldScenePath?: any);
     update(timeStep: number, unscaledTimeStep: number): void;
     updatePhysics(timeStep: number): void;
     isOutOfBounds(position: CANNON.Vec3): boolean;
@@ -77,8 +67,6 @@ export declare class World {
     clearEntities(): void;
     scrollTheTimeScale(scrollAmount: number): void;
     updateControls(controls: any): void;
-    changeEnableCharacter(value: any): void;
-    changeEnableVehicle(value: any): void;
     private generateHTML;
     private createParamsGUI;
 }
