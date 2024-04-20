@@ -10,19 +10,20 @@ let provider;
 let selectedAccount;
 
 function init() {
-  console.log("Initializing example");
-  console.log("WalletConnectProvider is", WalletConnectProvider);
-  console.log("Fortmatic is", Fortmatic);
-  console.log(
-    "window.web3 is",
-    window.web3,
-    "window.ethereum is",
-    window.ethereum
-  );
+  // console.log("Initializing example");
+  // console.log("WalletConnectProvider is", WalletConnectProvider);
+  // console.log("Fortmatic is", Fortmatic);
+  // console.log(
+  //   "window.web3 is",
+  //   window.web3,
+  //   "window.ethereum is",
+  //   window.ethereum
+  // );
   
   document.querySelector(".buy-stash").style.display = "none"
   document.querySelector(".ready-race").style.display = "none"
   // document.querySelector(".wallet-page").style.display = "none"
+  document.querySelector(".ready").style.display = "none"
 
   web3Modal = new Web3Modal({
     cacheProvider: false,
@@ -66,14 +67,18 @@ async function onDisconnect() {
   }
 }
 
-function onStash() {
+async function onStash() {
   document.querySelector(".buy-stash").style.display = "none";
-  document.querySelector(".ready-race").style.display = "block";
+  document.querySelector(".race").style.display = "block";
 }
 
-function onRace() {
-  document.querySelector(".buy-race").style.display = "none";
-  document.querySelector(".ready-ready").style.display = "block";
+async function onRace() {
+  document.querySelector(".race").style.display = "none";
+  document.querySelector(".ready").style.display = "block";
+}
+
+async function onReady() {
+ document.querySelector(".ready").style.display = "none";
 }
 
 window.addEventListener("load", async () => {
@@ -81,4 +86,5 @@ window.addEventListener("load", async () => {
   document.querySelector("#btn-wallet").addEventListener("click", onConnect);
   document.querySelector("#btn-stash").addEventListener("click", onStash)
   document.querySelector("#btn-race").addEventListener("click", onRace)
+  document.querySelector("#btn-ready").addEventListener("click", onReady)
 });

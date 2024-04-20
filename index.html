@@ -6,11 +6,16 @@
 	<style>
 		.wallet-page,
 		.buy-stash,
-		.ready-race {
+		.race,
+		.ready {
 			position: fixed;
 			display: flex;
 			z-index: 100;
 			width: 100%;
+		}
+
+		.ready {
+			bottom: 265px;
 		}
 
 		.wallet-content {
@@ -48,8 +53,7 @@
 			cursor: pointer;
 		}
 
-		.stash-page,
-		.ready-page {
+		.stash-page {
 			position: relative;
 			top: 170px;
 			width: 699px;
@@ -57,6 +61,40 @@
 			background-color: #34639A60;
 			margin: auto;
 			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+			font-weight: bolder;
+			text-shadow: none !important;
+			color: white;
+			text-align: center;
+		}
+
+		.race-page {
+			position: relative;
+			margin: auto;
+			display: flex;
+			width: 699px;
+			height: 339px;
+			top: 200px;
+			background-color: #34639A60;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+			font-weight: bolder;
+			text-shadow: none !important;
+			color: white;
+			text-align: center;
+		}
+
+		.ready-page {
+			position: relative;
+			margin: auto;
+			display: flex;
+			width: 699px;
+			height: 339px;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
@@ -84,7 +122,8 @@
 			cursor: pointer;
 		}
 
-		#btn-race {
+		#btn-race,
+		#btn-ready {
 			width: 179px;
 			height: 79px;
 			font-size: 28px;
@@ -154,6 +193,40 @@
 			justify-content: center;
 			font-family: system-ui;
 		}
+
+		table {
+			background-color: #B9B9B9;
+			color: black;
+			font-family: system-ui;
+			font-size: 14px;
+			text-shadow: none !important;
+			font-weight: 500;
+			border-collapse: collapse;
+			width: 595px;
+		}
+
+		thead {
+			height: 30px;
+		}
+
+		tbody {
+			height: 50px;
+			background-color: #78FB4A;
+		}
+
+		tbody td:hover {
+			background-color: #F1F615;
+			border: 1px solid #8c8d46;
+		}
+
+		tbody td:nth-child(3) {
+			background-color: #F1F615;
+		}
+
+		th {
+			border-right: 1px solid #7e7c7c;
+		}
+		
 	</style>
 </head>
 
@@ -204,11 +277,43 @@
 		</div>
 	</div>
 
-	<div class="ready-race">
-		<div class="ready-page">
+	<div class="race">
+		<div class="race-page">
 			<p style="font-size: 30px;">Get Ready to Race!</p>
 			<div style="padding-top: 16px;">
 				<button id="btn-race" style="font-family: revert;">RACE!</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="ready">
+		<div class="ready-page">
+			<div style="padding-top: 16px;">
+				<button id="btn-ready" style="font-family: revert; border: 3px solid #7ADE2B;">Ready</button>
+			</div>
+			<div style="margin-top: 45px;">
+				<table>
+					<thead>
+						<tr>
+							<th>Player1</th>
+							<th>Player2</th>
+							<th>Player3</th>
+							<th>Player4</th>
+							<th>Player5</th>
+						</tr>
+
+					</thead>
+					<tbody>
+						<tr>
+							<td>READY</td>
+							<td>READY</td>
+							<td>DISCONNECT IN <br>5,4,3,2,1</td>
+							<td>READY</td>
+							<td>READY</td>
+						</tr>
+
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
