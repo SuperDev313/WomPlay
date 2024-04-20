@@ -8,7 +8,6 @@ export declare class InputManager implements IUpdatable {
     pointerLock: any;
     isLocked: boolean;
     inputReceiver: IInputReceiver;
-    currentState: string;
     boundOnMouseDown: (evt: any) => void;
     boundOnMouseMove: (evt: any) => void;
     boundOnMouseUp: (evt: any) => void;

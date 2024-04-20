@@ -15,7 +15,6 @@ import { VehicleEntryInstance } from './VehicleEntryInstance';
 import { GroundImpactData } from './GroundImpactData';
 import { EntityType } from '../enums/EntityType';
 export declare class Character extends THREE.Object3D implements IWorldEntity {
-    sid: string;
     updateOrder: number;
     entityType: EntityType;
     height: number;
@@ -59,8 +58,6 @@ export declare class Character extends THREE.Object3D implements IWorldEntity {
     occupyingSeat: VehicleSeat;
     vehicleEntryInstance: VehicleEntryInstance;
     private physicsEnabled;
-    detectPosition: THREE.Vector3;
-    start: any;
     constructor(gltf: any);
     setAnimations(animations: []): void;
     setArcadeVelocityInfluence(x: number, y?: number, z?: number): void;
@@ -86,7 +83,6 @@ export declare class Character extends THREE.Object3D implements IWorldEntity {
     takeControl(): void;
     resetControls(): void;
     update(timeStep: number): void;
-    interpolation(vector1: THREE.Vector3, vector2: THREE.Vector3, duration: any): THREE.Vector3;
     inputReceiverInit(): void;
     displayControls(): void;
     inputReceiverUpdate(timeStep: number): void;

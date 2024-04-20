@@ -8,7 +8,6 @@ import { Wheel } from './Wheel';
 import { EntityType } from '../enums/EntityType';
 import { IWorldEntity } from '../interfaces/IWorldEntity';
 export declare abstract class Vehicle extends THREE.Object3D implements IWorldEntity {
-    sid: string;
     updateOrder: number;
     abstract entityType: EntityType;
     controllingCharacter: Character;
@@ -25,14 +24,11 @@ export declare abstract class Vehicle extends THREE.Object3D implements IWorldEn
     collision: CANNON.Body;
     materials: THREE.Material[];
     spawnPoint: THREE.Object3D;
-    detectPosition: THREE.Vector3;
-    detectQuaternion: CANNON.Quaternion;
     private modelContainer;
     private firstPerson;
     constructor(gltf: any, handlingSetup?: any);
     noDirectionPressed(): boolean;
     update(timeStep: number): void;
-    interpolation(vector1: THREE.Vector3, vector2: THREE.Vector3, duration: any): THREE.Vector3;
     forceCharacterOut(): void;
     onInputChange(): void;
     resetControls(): void;
