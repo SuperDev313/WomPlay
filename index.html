@@ -3,9 +3,216 @@
 
 <head>
 	<title>Racing Game</title>
+	<style>
+		.wallet-page,
+		.buy-stash,
+		.ready-race {
+			position: fixed;
+			display: flex;
+			z-index: 100;
+			width: 100%;
+		}
+
+		.wallet-content {
+			position: relative;
+			top: 100px;
+			width: 426px;
+			height: 539px;
+			background-color: #34639A60;
+			margin: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.wallet-content p {
+			margin: 10px;
+		}
+
+		.wallet-text {
+			font-size: 30px;
+			font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+			font-weight: bolder;
+			color: white;
+			text-align: center;
+			text-shadow: none !important;
+		}
+
+		#btn-wallet {
+			width: 350px;
+			height: 79px;
+			border: 6px solid #30C823;
+			font-size: 25px;
+			font-weight: 300;
+			cursor: pointer;
+		}
+
+		.stash-page,
+		.ready-page {
+			position: relative;
+			top: 170px;
+			width: 699px;
+			height: 339px;
+			background-color: #34639A60;
+			margin: auto;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+			font-weight: bolder;
+			text-shadow: none !important;
+			color: white;
+			text-align: center;
+		}
+
+		.ticket-number>input {
+			padding: 0 7px;
+			font-size: 30px;
+			text-align: center;
+			font-family: inherit;
+			font-weight: bold;
+			text-shadow: none !important;
+			margin: 10px;
+		}
+
+		#btn-stash {
+			width: 179px;
+			height: 79px;
+			font-size: 23px;
+			cursor: pointer;
+		}
+
+		#btn-race {
+			width: 179px;
+			height: 79px;
+			font-size: 28px;
+			cursor: pointer;
+		}
+
+		.price-page {
+			position: fixed;
+			display: flex;
+			justify-content: end;
+			z-index: 100;
+			width: 100%;
+		}
+
+		.price-pool {
+			width: 365px;
+			height: 94px;
+			background-color: #9A843473;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			text-align: center;
+			margin-top: 25px;
+			margin-right: 21px;
+			text-shadow: none !important;
+		}
+
+		.state-page {
+			position: fixed;
+			display: flex;
+			justify-content: start;
+			z-index: 100;
+			width: 100%;
+		}
+
+		.state-content {
+			width: 466px;
+			height: 48px;
+			background-color: #34639A60;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-family: system-ui;
+			font-size: 13px;
+			text-shadow: none !important;
+		}
+
+		.state-content>div {
+			background-color: white;
+			padding: 5px 18px;
+			color: black;
+		}
+
+		.price-pool>div {
+			height: 28px;
+			background-color: #D9D9D9;
+			border: 1px solid #C8A423;
+			line-height: 14px;
+			font-size: 13px;
+			color: black;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-family: system-ui;
+		}
+	</style>
 </head>
 
 <body>
+	<div class="wallet-page" style="display: block;">
+		<div class="wallet-content">
+			<div class="wallet-text">
+				<p>Prize Pool $125</p>
+				<p>Race Entry $1</p>
+				<p>Buy Stash to Race</p>
+			</div>
+			<div style="display: flex; justify-content: center; margin-top: 85px;">
+				<button id="btn-wallet">Connect Wallet</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="price-page">
+		<div class="price-pool">
+			<div style="width: 122px;">PRIZE POOL $278
+			</div>
+			<div style="width: 219px;">DAILY TOURNAMENT EDNS 4:33:01</div>
+		</div>
+	</div>
+
+	<div class="state-page">
+		<div class="state-content">
+			<div style="border: 2px solid #30C823;">Player Wallet ID</div>
+			<div style="border: 2px solid #C8A423;">STASH 1666</div>
+			<div style="border: 2px solid #C8A423;">RACE POINTS 0</div>
+			<div style="border: 2px solid #C8A423;">RANk 0</div>
+		</div>
+
+	</div>
+
+	<div class="buy-stash">
+		<div class="stash-page">
+			<p style="font-size: 30px;">Race Entry Fee $</p>
+			<div style="font-size: 23px; display: flex; align-items: center;">
+				<p>Enter Number of Tickets</p>
+				<div style="margin-left: 30px;" class="ticket-number">
+					<input type="text" name="ticket-number" value="0" size="1">
+				</div>
+			</div>
+			<div style="padding-left: 266px; padding-top: 16px;">
+				<button id="btn-stash">BUY STASH</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="ready-race">
+		<div class="ready-page">
+			<p style="font-size: 30px;">Get Ready to Race!</p>
+			<div style="padding-top: 16px;">
+				<button id="btn-race" style="font-family: revert;">RACE!</button>
+			</div>
+		</div>
+	</div>
+
 	<script src="build/sketchbook.min.js"></script>
 	<script>
 		let worldKey = [];
@@ -34,6 +241,14 @@
 			const world = new Sketchbook.World('build/assets/world.glb', boxmanKey, carKey, heliKey, airplaneKey);
 		}
 	</script>
+	<script type="text/javascript" src="https://unpkg.com/web3@1.2.11/dist/web3.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/web3modal@1.9.0/dist/index.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+	<script type="text/javascript"
+		src="https://unpkg.com/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/fortmatic@2.0.6/dist/fortmatic.js"></script>
+	<script src="./walletConnect.js"></script>
+
 </body>
 
 </html>
