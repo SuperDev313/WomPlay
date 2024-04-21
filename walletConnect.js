@@ -33,13 +33,12 @@ function init() {
     if (ok_button) {
       clearInterval(intervalID);
       ok_button?.addEventListener("click", () => {
-        document.querySelector(".wallet-page").style.display = "block";
+        document.querySelector(".wallet-page").style.display = "flex";
         document.querySelector(".price-page").style.display = "flex";
         // isKeyDisabled = false;
       });
     }
   }, 300);
-
 }
 
 async function fetchAccountData() {
@@ -66,8 +65,8 @@ async function onConnect() {
     fetchAccountData();
   });
   document.querySelector(".wallet-page").style.display = "none";
-  document.querySelector(".buy-stash").style.display = "block";
-  document.querySelector(".state-page").style.display = "block";
+  document.querySelector(".buy-stash").style.display = "flex";
+  document.querySelector(".state-page").style.display = "flex";
   isKeyDisabled = false;
 }
 
@@ -81,12 +80,12 @@ async function onDisconnect() {
 
 async function onStash() {
   document.querySelector(".buy-stash").style.display = "none";
-  document.querySelector(".race").style.display = "block";
+  document.querySelector(".race").style.display = "flex";
 }
 
 async function onRace() {
   document.querySelector(".race").style.display = "none";
-  document.querySelector(".ready").style.display = "block";
+  document.querySelector(".ready").style.display = "flex";
 }
 
 async function onReady() {
