@@ -7,7 +7,8 @@
 		.wallet-page,
 		.buy-stash,
 		.race,
-		.ready {
+		.ready,
+		.go {
 			position: fixed;
 			display: flex;
 			z-index: 100;
@@ -226,12 +227,29 @@
 		th {
 			border-right: 1px solid #7e7c7c;
 		}
-		
+
+		.go {
+			width: 100%;
+			height: 100%;
+			justify-content: center;
+			display: none;
+		}
+
+		.go-content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 702px;
+			height: 184px;
+			background-color: #D9D9D9;
+			color: black;
+			font-size: 64px;
+		}
 	</style>
 </head>
 
 <body>
-	<div class="wallet-page" style="display: block;">
+	<div class="wallet-page" style="display: none;">
 		<div class="wallet-content">
 			<div class="wallet-text">
 				<p>Prize Pool $125</p>
@@ -244,7 +262,7 @@
 		</div>
 	</div>
 
-	<div class="price-page">
+	<div class="price-page" style="display: none;">
 		<div class="price-pool">
 			<div style="width: 122px;">PRIZE POOL $278
 			</div>
@@ -252,7 +270,7 @@
 		</div>
 	</div>
 
-	<div class="state-page">
+	<div class="state-page" style="display: none;">
 		<div class="state-content">
 			<div style="border: 2px solid #30C823;">Player Wallet ID</div>
 			<div style="border: 2px solid #C8A423;">STASH 1666</div>
@@ -262,7 +280,7 @@
 
 	</div>
 
-	<div class="buy-stash">
+	<div class="buy-stash" style="display: none;">
 		<div class="stash-page">
 			<p style="font-size: 30px;">Race Entry Fee $</p>
 			<div style="font-size: 23px; display: flex; align-items: center;">
@@ -277,7 +295,7 @@
 		</div>
 	</div>
 
-	<div class="race">
+	<div class="race" style="display: none;">
 		<div class="race-page">
 			<p style="font-size: 30px;">Get Ready to Race!</p>
 			<div style="padding-top: 16px;">
@@ -286,7 +304,7 @@
 		</div>
 	</div>
 
-	<div class="ready">
+	<div class="ready" style="display: none;">
 		<div class="ready-page">
 			<div style="padding-top: 16px;">
 				<button id="btn-ready" style="font-family: revert; border: 3px solid #7ADE2B;">Ready</button>
@@ -316,6 +334,18 @@
 				</table>
 			</div>
 		</div>
+	</div>
+
+	<div class="go">
+		<div style="display: flex; justify-content: center; align-items: center;">
+			<div class="go-content">
+				<div id="countNum">
+					<p>3.. 2.. 1.. GO!</p>
+				</div>
+			</div>
+
+		</div>
+
 	</div>
 
 	<script src="build/sketchbook.min.js"></script>

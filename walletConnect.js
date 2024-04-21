@@ -9,26 +9,37 @@ let web3Modal;
 let provider;
 let selectedAccount;
 
+let isKeyDisabled = true;
+
+function handleKeyEvent(event) {
+  if (isKeyDisabled) {
+    event.preventDefault(); // Prevent default behavior (e.g., scrolling)
+    event.stopPropagation(); // Stop event propagation to parent elements
+    return false; // Stop further processing of the event
+  }
+}
+
 function init() {
-  // console.log("Initializing example");
-  // console.log("WalletConnectProvider is", WalletConnectProvider);
-  // console.log("Fortmatic is", Fortmatic);
-  // console.log(
-  //   "window.web3 is",
-  //   window.web3,
-  //   "window.ethereum is",
-  //   window.ethereum
-  // );
-  
-  document.querySelector(".buy-stash").style.display = "none"
-  document.querySelector(".ready-race").style.display = "none"
-  // document.querySelector(".wallet-page").style.display = "none"
-  document.querySelector(".ready").style.display = "none"
+  document.body.addEventListener("keydown", handleKeyEvent);
+  document.body.addEventListener("keyup", handleKeyEvent);
 
   web3Modal = new Web3Modal({
     cacheProvider: false,
     disableInjectedProvider: false,
   });
+
+  const intervalID = setInterval(() => {
+    var ok_button = document.getElementsByClassName("swal2-confirm")[0];
+    if (ok_button) {
+      clearInterval(intervalID);
+      ok_button?.addEventListener("click", () => {
+        document.querySelector(".wallet-page").style.display = "block";
+        document.querySelector(".price-page").style.display = "flex";
+        // isKeyDisabled = false;
+      });
+    }
+  }, 300);
+
 }
 
 async function fetchAccountData() {
@@ -38,7 +49,6 @@ async function fetchAccountData() {
 
   const accounts = await web3.eth.getAccounts();
   selectedAccount = accounts[0];
-
 }
 
 async function onConnect() {
@@ -57,6 +67,8 @@ async function onConnect() {
   });
   document.querySelector(".wallet-page").style.display = "none";
   document.querySelector(".buy-stash").style.display = "block";
+  document.querySelector(".state-page").style.display = "block";
+  isKeyDisabled = false;
 }
 
 async function onDisconnect() {
@@ -78,13 +90,27 @@ async function onRace() {
 }
 
 async function onReady() {
- document.querySelector(".ready").style.display = "none";
+  document.querySelector(".ready").style.display = "none";
+  document.querySelector(".go").style.display = "flex";
+  var countNum = document.getElementById("countNum");
+  var cnt = 3;
+  var interval = setInterval(() => {
+    countNum.innerHTML = `<p>${cnt ? cnt : "Go!"}</p>`;
+    console.log(cnt);
+    cnt--;
+    if (cnt < 0) {
+      clearInterval(interval);
+      setTimeout(() => {
+        document.querySelector(".go").style.display = "none";
+      }, 1000);
+    }
+  }, 1000);
 }
 
 window.addEventListener("load", async () => {
   init();
   document.querySelector("#btn-wallet").addEventListener("click", onConnect);
-  document.querySelector("#btn-stash").addEventListener("click", onStash)
-  document.querySelector("#btn-race").addEventListener("click", onRace)
-  document.querySelector("#btn-ready").addEventListener("click", onReady)
+  document.querySelector("#btn-stash").addEventListener("click", onStash);
+  document.querySelector("#btn-race").addEventListener("click", onRace);
+  document.querySelector("#btn-ready").addEventListener("click", onReady);
 });
